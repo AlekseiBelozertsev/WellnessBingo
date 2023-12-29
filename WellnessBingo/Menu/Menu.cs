@@ -8,54 +8,83 @@ namespace WellnessBingo
 {
     public class Menu
     {
-        static string[] elements;
-        static int counter = 0;
-        static string currentSelected;
+        private readonly string[] elements = { "December", "November", "October", "September", "July", "June", "National Wellness Month!" };
+        private int counter = 0;
+        private bool isSelected = false;
+        private string currentSelected = "";
 
-        public Menu(string[] inputElements)
+        public void UserMenu()
         {
-            elements = inputElements;
+            (int left, int top) = Console.GetCursorPosition();
+            while (!isSelected)
+            {
+                Console.SetCursorPosition(left, top);
+                RenderMenu();
+                NavigateMenu();
+            }
         }
         public void RenderMenu()
         {
+            string currentOption = "✅ \u001b[32m";
             for (int i = 0; i < elements.Length; i++)
             {
                 if (i == counter)
                 {
-                    Console.ForegroundColor = ConsoleColor.White; // Set the highlight color
-                    Console.BackgroundColor = ConsoleColor.Blue;  // Set the background color if needed
-                    Console.WriteLine($"> {elements[i]}");
+                    Console.WriteLine($"{currentOption}{elements[i]}");
                     currentSelected = elements[i];
-                    Console.ResetColor(); // Reset colors to default
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine($"> {elements[i]}");
+                    Console.WriteLine($"   {elements[i]}");
                 }
             }
         }
 
-        public string SelectedElement()
+        public void NavigateMenu()
         {
-            return currentSelected;
+            ConsoleKeyInfo cki = Console.ReadKey(true);
+            switch (cki.Key)
+            {
+                case ConsoleKey.DownArrow:
+                    if (counter == elements.Length - 1)
+                    {
+                        UpdateCounter(0);
+                    }
+                    else
+                    {
+                        Navigate("next");
+                    }
+                    break;
+                case ConsoleKey.UpArrow:
+                    if (counter == 0)
+                    {
+                        UpdateCounter(elements.Length - 1);
+                    }
+                    else
+                    {
+                        Navigate("prev");
+                    }
+                    break;
+            }
         }
 
-        public int Counter()
-        {
-            return counter;
-        }
 
-        public void UpdateCounter(int arg)
+        private void UpdateCounter(int arg)
         {
             counter = arg;
         }
-        public void ToNextElement()
+        private void Navigate(string nav)
         {
-            counter++;
+            if (nav == "prev")
+            {
+                counter--;
+            }
+            else if (nav == "next")
+            {
+                counter++;
+            }
         }
-        public void ToPreviousElement()
-        {
-            counter--;
-        }
+
     }
 }

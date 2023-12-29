@@ -3,7 +3,6 @@
     internal class Program
     {
         static string AppName = "WellnessBingo";
-        static string[] elements = { "December", "November", "October", "September", "July", "June", "National Wellness Month!" };
         static string[] december = { "Go ice skating", "Dance to holiday music", "Let go of an old habit", "Create homemade decorations", "Track your water intake", "Build a snowman", "Do a random act of kindness", "Get 10,000 steps in a day", "Bake cookies", "Mail someone a letter", "Practice breathing exercises", "Shop at a small business", "Snuggle in a blanket", "Write a resolution for 2024", "Sit by a fire", "Get yourself a small gift", "Read a chapter of a book", "Volunteer your time", "Be present", "Make a gingerbread house", "Journal your feelings", "Watch a holiday movie", "Have a cozy day" };
         static string[] november = { "Clean an area of clutter", "Make a pot of soup", "Visit your local library", "Create a vision board", "Write down 3 things you're grateful for", "Bake a pie", "Host a game night", "Go on a scenic drive", "Compliment a stranger", "Enjoy a holiday beverage", "Jump in a pile of leaves", "Go to a farmer's market", "Slow down and enjoy the moment", "Wear fuzzy socks", "Give yourself a hug", "Make someone laugh", "Don't sweat the small stuff", "Take photos in nature", "Have a bonfire", "Don't compare yourself to others", "Take 5 deep breaths", "Spend time with animals", "Try a new skill or balance", "Enjoy a cozy night in" };
         static string[] october = { "Light (or buy) a candle", "Enjoy a cozy night in", "Write down what you're grateful for", "Call a loved one", "Take a scenic hike", "Go to a farmer's market", "Don't sweat the small stuff", "Go apple picking", "Host a game night", "Compliment a stranger", "Take 5 deep breaths", "Do a meditation outdoors", "Carve a pumpkin", "Give yourself a hug", "Bake a pie", "Declutter your closet", "Enjoy a fall beverage", "Host a book club", "Listen to the campfire sleep sound", "Watch a classic fall movie", "Make someone laugh", "Jump in a pile of leaves", "Visit a pumpkin patch", "Go on a picnic" };
@@ -15,84 +14,14 @@
         static void Main(string[] args)
         {
             Console.WriteLine($"Welcome to the {AppName}!");
-            string[] months = elements;
             Console.WriteLine("Choose using up and down arrows: ");
-            Menu userMenu = new Menu(months);
+            Menu userMenu = new Menu();
             RandomGenerator generator = new RandomGenerator();
-            userMenu.RenderMenu();
-            userMenu.ToNextElement();
-            bool isFinished = false;
-            while (!isFinished)
-            {
-                ConsoleKeyInfo cki = Console.ReadKey(true);
-                switch (cki.Key)
-                {
-                    case ConsoleKey.DownArrow:
-                        if (userMenu.Counter() == months.Length)
-                        {
-                            userMenu.UpdateCounter(0);
-                        }
-                        Console.Clear();
-                        Console.WriteLine($"Welcome to the {AppName}!");
-                        Console.WriteLine("Choose using up and down arrows: ");
-                        userMenu.RenderMenu();
-                        userMenu.ToNextElement();
-                        break;
-                    case ConsoleKey.UpArrow:
-                        if (userMenu.Counter() == 0)
-                        {
-                            userMenu.UpdateCounter(months.Length - 1);
-                        }
-                        else
-                        {
-                            userMenu.ToPreviousElement();
-                        }
-                        Console.Clear();
-                        Console.WriteLine($"Welcome to the {AppName}");
-                        Console.WriteLine("Choose using up and down arrows: ");
-                        userMenu.RenderMenu();
-                        break;
-                    case ConsoleKey.Enter:
-                        string currentSelected = userMenu.SelectedElement();
-                        switch (currentSelected)
-                        {
-                            case "December":
-                                string a = generator.Generate(december);
-                                Console.WriteLine($"Today I suggest you go and... {a}!");
-                                break;
-                            case "November":
-                                string b = generator.Generate(november);
-                                Console.WriteLine($"Today I suggest you go and... {b}!");
-                                break;
-                            case "October":
-                                string c = generator.Generate(october);
-                                Console.WriteLine($"Today I suggest you go and... {c}!");
-                                break;
-                            case "September":
-                                string d = generator.Generate(september);
-                                Console.WriteLine($"Today I suggest you go and... {d}!");
-                                break;
-                            case "July":
-                                string e = generator.Generate(june);
-                                Console.WriteLine($"Today I suggest you go and... {e}!");
-                                break;
-                            case "June":
-                                string f = generator.Generate(july);
-                                Console.WriteLine($"Today I suggest you go and... {f}!");
-                                break;
-                            case "National Wellness Month!":
-                                string g = generator.Generate(nationalWellnessMonth);
-                                Console.WriteLine($"Today I suggest you go and... {g}!");
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
+            
+            Console.WriteLine($"Welcome to the app!");
+            Console.WriteLine("Choose using up and down arrows: ");
+            userMenu.UserMenu();
                 
-            }
         }
     }
 }
