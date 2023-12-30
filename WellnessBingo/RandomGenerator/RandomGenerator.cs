@@ -8,15 +8,14 @@ namespace WellnessBingo
 {
     public class RandomGenerator
     {
-        //static string[] elements;
-        //public RandomGenerator(string[] inputElements) {
-        //    elements = inputElements;
-        //}
-        public string Generate(string[] elements) {
+        public string generatedActivity = string.Empty;
+        public void GenerateElement(Dictionary<string, string[]> elements, string element) {
             Random random = new Random();
-            int i = random.Next(0, elements.Length);
-            string randomElement = elements[i];
-            return randomElement;
+            if(elements.ContainsKey(element)){
+                string[] result = elements[element];
+                int randomIndex = random.Next(0, result.Length);
+                generatedActivity = result[randomIndex];
+            }
         }
     }
 }
