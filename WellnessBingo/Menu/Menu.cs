@@ -11,7 +11,7 @@ namespace WellnessBingo
     {
         private readonly string[] elements = { "December", "November", "October", "September", "July", "June", "National Wellness Month!" };
         private int counter = 0;
-        private bool isSelected = false;
+        public bool isSelected = false;
         public string currentSelected = string.Empty;
 
         private ConsoleKey pressedKey;
@@ -88,6 +88,7 @@ namespace WellnessBingo
                 isSelected = true;
             }
         }
+
         private void Navigate(string nav)
         {
             if (nav == "prev")
