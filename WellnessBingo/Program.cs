@@ -2,27 +2,32 @@
 {
     internal class Program
     {
-        static bool isFinished = false;
+        static bool IsFinished = false;
         static void Main(string[] args)
         {
-            Menu userMenu = new Menu();
-            RandomGenerator generator = new RandomGenerator();
+            Menu UserMenu = new Menu();
+            RandomGenerator Generator = new RandomGenerator();
             Storage storage = new Storage();
             Prompt prompt = new Prompt();
-            while (!isFinished)
+            while (!IsFinished)
             {
                 Greet();
-                userMenu.UserMenu();
-                generator.GenerateElement(storage.BingoElements, userMenu.currentSelected);
-                Console.WriteLine("Today you shall... " + generator.generatedActivity);
+                UserMenu.UserMenu();
+                Generator.GenerateElement(storage.BingoElements, UserMenu.currentSelected);
+                Console.WriteLine("Today you shall... " + Generator.GeneratedActivity);
+                IsFinished = UserMenu.isSelected;
+                Goodbye();
                 // prompt.UserPrompt();
-
             }
         }
         static void Greet()
         {
-            Console.WriteLine($"Welcome to the Welness Bingo!");
-            Console.WriteLine("Choose using up and down arrows: ");
+            Console.WriteLine($"Welcome to the Welness Bingo!\nChoose options by using ⬆️ / ⬇️");
+        }
+
+        static void Goodbye()
+        {
+            Console.WriteLine("Thank you for playing.");
         }
     }
 }
