@@ -11,15 +11,13 @@ namespace WellnessBingo
     {
         private readonly string[] elements = { "December", "November", "October", "September", "July", "June", "National Wellness Month!" };
         private int counter = 0;
-        public bool isSelected = false;
-        public string currentSelected = string.Empty;
-
+        public bool IsSelected { get; set; } = false;
+        public string CurrentSelected { get; set; } = string.Empty;
         private ConsoleKey pressedKey;
-
         public void UserMenu()
         {
             (int left, int top) = Console.GetCursorPosition();
-            while (!isSelected)
+            while (!IsSelected)
             {
                 Console.SetCursorPosition(left, top);
                 RenderMenu();
@@ -36,7 +34,7 @@ namespace WellnessBingo
                 if (i == counter)
                 {
                     Console.WriteLine($"{currentOption}{elements[i]}");
-                    currentSelected = elements[i];
+                    CurrentSelected = elements[i];
                     Console.ResetColor();
                 }
                 else
@@ -84,8 +82,8 @@ namespace WellnessBingo
 
         public void SelectElement() {
             if(pressedKey == ConsoleKey.Enter) {
-                currentSelected = elements[counter];
-                isSelected = true;
+                CurrentSelected = elements[counter];
+                IsSelected = true;
             }
         }
 

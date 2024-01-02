@@ -1,33 +1,52 @@
-﻿namespace WellnessBingo
+﻿using System.Reflection.Emit;
+
+namespace WellnessBingo
 {
     internal class Program
     {
-        static bool IsFinished = false;
-        static void Main(string[] args)
+        private bool isFinished = false;
+
+        private string arrowIcons = "⬆️ / ⬇️";
+        public static void Main(string[] args)
         {
-            Menu UserMenu = new Menu();
-            RandomGenerator Generator = new RandomGenerator();
-            Storage storage = new Storage();
-            Prompt prompt = new Prompt();
-            while (!IsFinished)
-            {
-                Greet();
-                UserMenu.UserMenu();
-                Generator.GenerateElement(storage.BingoElements, UserMenu.currentSelected);
-                Console.WriteLine("Today you shall... " + Generator.GeneratedActivity);
-                IsFinished = UserMenu.isSelected;
-                Goodbye();
-                // prompt.UserPrompt();
-            }
-        }
-        static void Greet()
-        {
-            Console.WriteLine($"Welcome to the Welness Bingo!\nChoose options by using ⬆️ / ⬇️");
+            Program program = new Program();
+            program.Run();
         }
 
-        static void Goodbye()
+        private void Run()
         {
-            Console.WriteLine("Thank you for playing.");
+            Menu userMenu = new Menu();
+            RandomGenerator generator = new RandomGenerator();
+            Storage storage = new Storage();
+
+            while (!isFinished)
+            {
+                Greet();
+                userMenu.UserMenu();
+                generator.GenerateElement(storage.BingoElements, userMenu.CurrentSelected);
+                ShowResult(generator.GeneratedActivity);
+                SetIsFinished(userMenu.IsSelected);
+                Goodbye();
+            }
+        }
+        private void Greet()
+        {
+            Console.WriteLine($"Welcome to the Welness Bingo!\nChoose options by using {arrowIcons}");
+        }
+
+        private void ShowResult(string result)
+        {
+            Console.WriteLine($"Today you shall... {result}.");
+        }
+
+        private void SetIsFinished(bool isOptionSelected)
+        {
+            isFinished = isOptionSelected;
+        }
+
+        private void Goodbye()
+        {
+            Console.WriteLine("See you next time.");
         }
     }
 }
