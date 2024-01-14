@@ -21,12 +21,12 @@ namespace WellnessBingo
 
             while (!isFinished)
             {
+                Console.Clear();
                 Greet();
                 userMenu.UserMenu();
                 generator.GenerateElement(storage.BingoElements, userMenu.CurrentSelected);
                 ShowResult(generator.GeneratedActivity);
-                SetIsFinished(userMenu.IsSelected);
-                Goodbye();
+                ConfirmIsFinished();
             }
         }
         private void Greet()
@@ -37,6 +37,20 @@ namespace WellnessBingo
         private void ShowResult(string result)
         {
             Console.WriteLine($"Today you shall... {result}.");
+        }
+
+        private void ConfirmIsFinished() {
+            System.Console.Write("Do you wish to proceed? (Y/N): ");
+            string result = Console.ReadLine();
+            if (result == "Y") {
+                
+                Run();
+            } else if (result == "N") {
+                SetIsFinished(true);
+                Goodbye();
+            } else {
+                System.Console.WriteLine("Type Y for proceed in the game and N to quit.");
+            }
         }
 
         private void SetIsFinished(bool isOptionSelected)
