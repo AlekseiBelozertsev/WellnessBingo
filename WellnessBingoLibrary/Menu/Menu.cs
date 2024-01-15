@@ -9,7 +9,7 @@ namespace WellnessBingo
 {
     public class Menu
     {
-        private readonly string[] elements = { "December", "November", "October", "September", "July", "June", "National Wellness Month!" };
+        private string[] elements;
         private int counter = 0;
         public bool IsSelected { get; set; } = false;
         public string CurrentSelected { get; set; } = string.Empty;
@@ -29,6 +29,8 @@ namespace WellnessBingo
         public void RenderMenu()
         {
             string currentOption = "✅ \u001b[32m";
+            Storage storage = new Storage();
+            elements = storage.BingoElements.Keys.ToArray();
             for (int i = 0; i < elements.Length; i++)
             {
                 if (i == counter)
