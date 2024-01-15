@@ -42,14 +42,14 @@ namespace WellnessBingo
         private void ConfirmIsFinished() {
             System.Console.Write("Do you wish to proceed? (Y/N): ");
             string result = Console.ReadLine();
-            if (result == "Y") {
+            if (result == "Y" || result == "y") {
                 
                 Run();
-            } else if (result == "N") {
+            } else if (result == "N" || result == "n") {
                 SetIsFinished(true);
                 Goodbye();
             } else {
-                System.Console.WriteLine("Type Y for proceed in the game and N to quit.");
+                Run();
             }
         }
 
