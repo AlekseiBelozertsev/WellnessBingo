@@ -2,7 +2,13 @@ namespace WellnessBingo
 {
     public class Prompt
     {
-        public bool response;
+        private bool response;
+
+        public bool Response
+        {
+            get { return response; }
+            private set { response = value; }
+        }
 
         public void UserPrompt(bool isFinished) {
             Console.WriteLine("Do you wish to proceed? Y/N");

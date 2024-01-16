@@ -5,7 +5,7 @@ namespace WellnessBingo
 {
     public class Storage
     {
-        public Dictionary<string, string[]> BingoElements = new Dictionary<string, string[]>{
+        private Dictionary<string, string[]> bingoElements = new Dictionary<string, string[]>{
             {"January", new string[] { "Decide Your Word of the Year", "Write a Vision Statement for 2024", "Do a Random Act of Kindness", "Try a New Exercise", "Stretch Before Bed", "Let Go of an Old Habit", "Get 10,000 Steps in a Day", "Declutter Your Closet", "Try a New Restaurant", "Plan a 2024 Adventure", "Write a To-Do List Item", "Create a 'Motivation' Playlist", "Repeat Positive Affirmations", "Write Yourself a Letter", "Celebrate Your Progress", "Listen to an Inspiring Podcast", "Treat Yourself to a New Book", "Schedule Some 'Me Time'", "Learn Something New", "Take a Nap", "Journal Your Feelings", "Create a New Morning Routine", "Set a Screen Time Limit", "Host a Vision Board Party" }},
             {"December", new string[] { "Go ice skating", "Dance to holiday music", "Let go of an old habit", "Create homemade decorations", "Track your water intake", "Build a snowman", "Do a random act of kindness", "Get 10,000 steps in a day", "Bake cookies", "Mail someone a letter", "Practice breathing exercises", "Shop at a small business", "Snuggle in a blanket", "Write a resolution for 2024", "Sit by a fire", "Get yourself a small gift", "Read a chapter of a book", "Volunteer your time", "Be present", "Make a gingerbread house", "Journal your feelings", "Watch a holiday movie", "Have a cozy day" }},
             {"November", new string[] {"Clean an area of clutter", "Make a pot of soup", "Visit your local library", "Create a vision board", "Write down 3 things you're grateful for", "Bake a pie", "Host a game night", "Go on a scenic drive", "Compliment a stranger", "Enjoy a holiday beverage", "Jump in a pile of leaves", "Go to a farmer's market", "Slow down and enjoy the moment", "Wear fuzzy socks", "Give yourself a hug", "Make someone laugh", "Don't sweat the small stuff", "Take photos in nature", "Have a bonfire", "Don't compare yourself to others", "Take 5 deep breaths", "Spend time with animals", "Try a new skill or balance", "Enjoy a cozy night in"}},
@@ -14,7 +14,13 @@ namespace WellnessBingo
             {"July", new string[] {"Eat your favorite dessert", "Have a picnic", "Try a new exercise", "Get some sunshine", "Create a summer bucket list", "Volunteer your time", "Stargaze", "Go to a farmer's market", "Take a bike ride", "Treat yourself to ice cream", "Do an art project", "Take a walk on a new trail", "Make a vision board", "Take a day trip to a beach", "Buy yourself flowers", "Clean your home", "Meditate for 10 minutes", "Relax in a hammock", "Host a BBQ with loved ones", "Take a digital detox day", "Start a beach read", "Say 'I love you' to yourself", "Do one thing you've been putting off", "Get 10,000 steps in a day"}},
             {"June", new string[] {"Plan a road trip", "Build a relaxing evening routine", "Read a chapter in your book", "Meditate for 10 minutes before bed", "Wash your bedding and sheets", "Soak your feet in an Epsom salt bath", "Take 5 deep breaths", "Drink chamomile tea before bed", "Try a new sleep journey", "Enjoy a cozy night in", "Set your thermostat between 60-67°F", "Get 8 hours of sleep", "Make your bed", "Wear your favorite pajamas", "Diffuse lavender oil", "Create a 'wind down' playlist", "Treat yourself to a new pillow or blanket", "Do some gentle stretching or yoga", "Relax in a park", "Go to bed early", "Have a phone-free evening", "Do your skincare routine", "Journal before bed", "Get some morning sunshine"}},
             {"National Wellness Month!", new string[] {"Light a candle", "Treat yourself to a delicious meal", "Go for a nature walk", "Have a 'no phone' day", "Read a chapter of a book", "Do a crossword puzzle", "Spend time in the sun", "Do your skincare routine", "Spend the day at the park", "Set an intention", "Listen to an inspirational podcast", "Write a letter to your future self", "Go to bed early", "Buy yourself a coffee or tea", "Try a new exercise", "Look at pictures of baby animals", "Do an art project", "Make yourself laugh", "Say 3 things you love about yourself", "Stretch", "Have a DIY spa day", "Create your own affirmation", "Do a breathing exercise", "Stay in for a night", "Call a friend or loved one"}},
-            
+
         };
+
+        public Dictionary<string, string[]> BingoElements
+        {
+            get { return bingoElements; }
+            private set { bingoElements = value; }
+        }
     };
 }

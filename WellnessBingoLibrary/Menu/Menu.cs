@@ -11,9 +11,20 @@ namespace WellnessBingo
     {
         private string[] elements;
         private int counter = 0;
-        public bool IsSelected { get; set; } = false;
-        public string CurrentSelected { get; set; } = string.Empty;
+        private bool isSelected = false;
+        private string currentSelected = string.Empty;
         private ConsoleKey pressedKey;
+
+        public string CurrentSelected
+        {
+            get { return currentSelected; }
+            private set { currentSelected = value; }
+        }
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            private set { isSelected = value; }
+        }
         public void UserMenu()
         {
             (int left, int top) = Console.GetCursorPosition();
